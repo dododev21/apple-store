@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Watch</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/watch.css}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<section class="hero">
+  <div class="hero-content">
+    <span th:if="${hero.eyebrow}" th:text="${hero.eyebrow}">Apple Watch</span>
+    <h1 th:text="${hero.title}">WATCH</h1>
+    <p th:utext="${hero.description}">건강. 연결. 움직임.<br>손목 위의 미래.</p>
+    <div class="buttons">
+      <button>구입하기</button>
+      <button class="outline">더 알아보기</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img th:src="${hero.imageUrl}" alt="Apple Watch">
+  </div>
+</section>
+
+<section class="ultra-section" th:if="${ultra != null}">
+  <div class="sticky-text">
+    <h2 th:text="${ultra.title}">Ultra.</h2>
+  </div>
+  <div class="ultra-image">
+    <img th:src="${ultra.imageUrl}" alt="Apple Watch Ultra">
+  </div>
+</section>
+
+<section class="lineup">
+  <div class="section-title">
+    <h2>라인업.</h2>
+    <p>당신의 라이프스타일에 맞게.</p>
+  </div>
+  <div class="lineup-grid">
+    <div class="watch-card" th:each="item : ${lineups}">
+      <img th:src="${item.imageUrl}" th:alt="${item.title}">
+      <h3 th:text="${item.title}">Apple Watch</h3>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div th:each="item : ${features}"
+       class="feature-card"
+       th:classappend="${item.layoutClass}">
+    <img th:src="${item.imageUrl}" th:alt="${item.title}">
+    <div class="overlay" th:if="${item.title != null}">
+      <h2 th:text="${item.title}">Fitness+</h2>
+      <p th:text="${item.subtitle}">더 건강한 하루를 위한 동기부여.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bands-section" th:if="${bands != null}">
+  <div class="bands-content">
+    <img th:src="${bands.imageUrl}" alt="Watch Bands">
+    <div class="bands-text">
+      <h2 th:text="${bands.title}">새로운 밴드.</h2>
+      <p th:utext="${bands.subtitle}">스타일은 더 자유롭게.<br>개성은 더 선명하게.</p>
+    </div>
+  </div>
+</section>
+
+<section class="health">
+  <div class="health-grid">
+    <div class="health-card" th:each="item : ${healthCards}">
+      <img th:src="${item.imageUrl}" alt="">
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Copyright © 2026 Apple Inc. All rights reserved.
+</footer>
+
+<script th:src="@{/js/watch.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

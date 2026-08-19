@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Store Premium</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1 th:text="${hero.title}">iPhone 17 Pro</h1>
+    <p th:text="${hero.description}">혁신은 또 한 번, 당신의 손안에서.</p>
+    <div class="hero-buttons">
+      <button>구매하기</button>
+      <button class="outline">더 알아보기</button>
+    </div>
+  </div>
+  <img th:src="${hero.imageUrl}" alt="Main Visual">
+</section>
+
+<section class="category-section">
+  <th:block th:each="category : ${categories}">
+    <a th:if="${category.linkUrl != null}"
+       th:href="${category.linkUrl}"
+       class="category-card">
+      <img th:src="${category.imageUrl}" th:alt="${category.name}">
+      <h3 th:text="${category.name}">Mac</h3>
+    </a>
+    <div th:unless="${category.linkUrl != null}" class="category-card">
+      <img th:src="${category.imageUrl}" th:alt="${category.name}">
+      <h3 th:text="${category.name}">Accessories</h3>
+    </div>
+  </th:block>
+</section>
+
+<section class="products">
+  <div th:each="product : ${products}"
+       class="product-card"
+       th:classappend="${product.layoutClass}">
+    <img th:src="${product.imageUrl}" th:alt="${product.title}">
+    <div class="content">
+      <h2 th:text="${product.title}">iPhone 17 Pro</h2>
+      <p th:text="${product.description}">프로 그 이상의 퍼포먼스.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Copyright © 2026 Apple Store Clone</p>
+</footer>
+
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

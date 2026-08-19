@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPad - Apple</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/ipad.css}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="eyebrow" th:if="${hero.eyebrow}" th:text="${hero.eyebrow}">새로운 경험</span>
+    <h1 th:text="${hero.title}">iPad</h1>
+    <p th:utext="${hero.description}">강력함은 더 얇게.<br/>상상력은 더 거대하게.</p>
+    <div class="hero-buttons">
+      <button>구입하기</button>
+      <button class="outline">더 알아보기</button>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img th:src="${hero.imageUrl}" class="hero-image" alt="iPad">
+    <div class="glow"></div>
+  </div>
+</section>
+
+<section class="sticky-showcase" th:if="${stickyLeft != null}">
+  <div class="sticky-panel left">
+    <h2 th:text="${stickyLeft.title}">압도적인 몰입감.</h2>
+    <p th:text="${stickyLeft.description}">Apple Pencil Pro와 Liquid Retina 디스플레이가 만나 창작의 경계를 무너뜨립니다.</p>
+  </div>
+  <div class="sticky-panel right" th:if="${stickyRight != null}">
+    <img th:src="${stickyRight.imageUrl}" alt="">
+  </div>
+</section>
+
+<section class="products">
+  <div class="section-title">
+    <h2>라인업 살펴보기</h2>
+    <p>당신에게 딱 맞는 iPad.</p>
+  </div>
+  <div class="product-grid">
+    <div class="product-card" th:each="item : ${lineups}">
+      <img th:src="${item.imageUrl}" th:alt="${item.title}">
+      <h3 th:text="${item.title}">iPad</h3>
+      <span th:text="${item.subtitle}">가장 다재다능한 iPad</span>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div th:each="item : ${galleries}"
+       class="gallery-card"
+       th:classappend="${item.layoutClass}">
+    <img th:src="${item.imageUrl}" alt="">
+  </div>
+</section>
+
+<section class="compare-section" th:if="${compare != null}">
+  <div class="compare-text">
+    <h2 th:text="${compare.title}">비교해보세요.</h2>
+    <p th:text="${compare.subtitle}">최고의 iPad를 선택하는 가장 쉬운 방법.</p>
+  </div>
+  <div class="compare-image">
+    <img th:src="${compare.imageUrl}" alt="iPad 비교">
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Copyright © 2026 Apple Inc. All rights reserved.</p>
+</footer>
+
+<script th:src="@{/js/ipad.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

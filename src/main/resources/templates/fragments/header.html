@@ -1,0 +1,32 @@
+<header class="header" th:fragment="header">
+  <div class="logo-wrap">
+    <a th:href="@{/}">
+      <img th:src="${subPage} ? @{/images/main/logo-sub.png} : @{/images/main/logo.png}"
+           alt="Apple Logo"
+           class="logo"
+           th:classappend="${subPage} ? ' logo-sub' : ''">
+    </a>
+  </div>
+
+  <nav class="nav">
+    <a th:href="@{/mac}" th:classappend="${activePage == 'mac'} ? 'active'">Mac</a>
+    <a th:href="@{/ipad}" th:classappend="${activePage == 'ipad'} ? 'active'">iPad</a>
+    <a th:href="@{/iphone}" th:classappend="${activePage == 'iphone'} ? 'active'">iPhone</a>
+    <a th:href="@{/watch}" th:classappend="${activePage == 'watch'} ? 'active'">Watch</a>
+    <a th:href="@{/airpods}" th:classappend="${activePage == 'airpods'} ? 'active'">AirPods</a>
+    <a href="#">고객지원</a>
+  </nav>
+
+  <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="sub-menu">
+    <a href="#">주문</a>
+    <a href="#">계정</a>
+    <a href="#">로그인</a>
+    <button>🛒</button>
+  </div>
+</header>

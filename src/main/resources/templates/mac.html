@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mac - Apple</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/mac.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1 th:text="${hero.title}">Mac</h1>
+    <p th:text="${hero.description}">가능을 펼쳐보이다.</p>
+  </div>
+  <img th:src="${hero.imageUrl}" alt="Mac">
+</section>
+
+<section class="product-nav">
+  <div class="nav-card" th:each="card : ${navCards}">
+    <img th:src="${card.imageUrl}" th:alt="${card.title}">
+    <h3 th:text="${card.title}">iMac</h3>
+  </div>
+</section>
+
+<section class="banner-grid">
+  <div class="banner-card" th:each="banner : ${banners}">
+    <img th:src="${banner.imageUrl}" alt="">
+  </div>
+</section>
+
+<section class="services">
+  <h2>Mac을 더욱 특별하게.</h2>
+  <div class="service-grid">
+    <div class="service-card" th:each="service : ${services}">
+      <img th:src="${service.imageUrl}" th:alt="${service.title}">
+      <h3 th:text="${service.title}">Trade In</h3>
+      <p th:text="${service.description}">기존 제품 보상 판매.</p>
+    </div>
+  </div>
+</section>
+
+<section class="accessories">
+  <h2>추천 액세서리</h2>
+  <div class="acc-grid">
+    <div class="acc-card" th:each="acc : ${accessories}">
+      <img th:src="${acc.imageUrl}" th:alt="${acc.title}">
+      <h3 th:text="${acc.title}">Magic Keyboard</h3>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Copyright © 2026 Apple Inc.</p>
+</footer>
+
+<script th:src="@{/js/mac.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

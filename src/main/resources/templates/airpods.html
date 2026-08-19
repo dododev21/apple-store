@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirPods - Apple</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/airpods.css}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<section class="hero">
+  <div class="hero-content">
+    <span th:if="${hero.eyebrow}" th:text="${hero.eyebrow}">새로운 AirPods</span>
+    <h1 th:text="${hero.title}">AirPods</h1>
+    <p th:utext="${hero.description}">몰입의 새로운 차원.<br>당신만의 사운드.</p>
+    <div class="buttons">
+      <button>구입하기</button>
+      <button class="outline">더 알아보기</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img th:src="${hero.imageUrl}" alt="AirPods">
+  </div>
+</section>
+
+<section class="icons">
+  <div class="icon-card" th:each="icon : ${icons}">
+    <img th:src="${icon.imageUrl}" alt="">
+    <span th:text="${icon.title}">빠른 배송</span>
+  </div>
+</section>
+
+<section class="products">
+  <div class="section-title">
+    <h2>라인업.</h2>
+    <p>당신에게 맞는 AirPods.</p>
+  </div>
+  <div class="product-grid">
+    <div class="product-card" th:each="item : ${lineups}">
+      <img th:src="${item.imageUrl}" th:alt="${item.title}">
+      <h3 th:text="${item.title}">AirPods</h3>
+    </div>
+  </div>
+</section>
+
+<section class="feature-grid">
+  <div th:each="item : ${features}"
+       class="feature-card"
+       th:classappend="${item.layoutClass}">
+    <img th:src="${item.imageUrl}" th:alt="${item.title}">
+    <div class="overlay" th:if="${item.title != null}">
+      <h2 th:text="${item.title}">AirPods Max 2</h2>
+      <p th:text="${item.subtitle}">압도적인 사운드 경험.</p>
+    </div>
+  </div>
+</section>
+
+<section class="smart-section" th:if="${smart != null}">
+  <div class="smart-content">
+    <img th:src="${smart.imageUrl}" alt="">
+    <div class="smart-text">
+      <h2 th:text="${smart.title}">스마트 기능.</h2>
+      <p th:utext="${smart.subtitle}">운동 추적부터 실시간 통역까지.<br>AirPods는 더 똑똑해졌습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-card" th:each="item : ${galleries}">
+    <img th:src="${item.imageUrl}" alt="">
+  </div>
+</section>
+
+<footer class="footer">
+  Copyright © 2026 Apple Inc. All rights reserved.
+</footer>
+
+<script th:src="@{/js/airpods.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

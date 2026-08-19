@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone - Apple</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/iphone.css}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<section class="hero">
+  <div class="hero-left">
+    <span th:if="${hero.eyebrow}" th:text="${hero.eyebrow}">새로운 iPhone</span>
+    <h1 th:text="${hero.title}">iPhone</h1>
+    <p th:utext="${hero.description}">가장 강력한 성능.<br>가장 아름다운 경험.</p>
+    <div class="buttons">
+      <button>구입하기</button>
+      <button class="outline">더 알아보기</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img th:src="${hero.imageUrl}" class="hero-phone" alt="iPhone 17 Pro">
+  </div>
+</section>
+
+<section class="video-section" th:if="${videoSticky != null}">
+  <div class="sticky-title">
+    <h2 th:text="${videoSticky.title}">Pro. Beyond.</h2>
+  </div>
+  <div class="video-card" th:if="${videoCard != null}">
+    <img th:src="${videoCard.imageUrl}" alt="iPhone Air">
+  </div>
+</section>
+
+<section class="models">
+  <div class="section-head">
+    <h2>라인업.</h2>
+    <p>당신에게 딱 맞는 iPhone.</p>
+  </div>
+  <div class="model-grid">
+    <div class="model-card" th:each="item : ${lineups}">
+      <img th:src="${item.imageUrl}" th:alt="${item.title}">
+      <h3 th:text="${item.title}">iPhone</h3>
+    </div>
+  </div>
+</section>
+
+<section class="feature-grid">
+  <div th:each="item : ${features}"
+       class="feature-card"
+       th:classappend="${item.layoutClass}">
+    <img th:src="${item.imageUrl}" th:alt="${item.title}">
+    <div class="overlay" th:if="${item.title != null}">
+      <h2 th:text="${item.title}">Titanium.</h2>
+      <p th:text="${item.subtitle}">놀랍도록 가볍고 강력하게.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ios-section" th:if="${ios != null}">
+  <div class="ios-content">
+    <img th:src="${ios.imageUrl}" alt="iOS">
+    <div class="ios-text">
+      <h2 th:text="${ios.title}">iOS 26</h2>
+      <p th:utext="${ios.subtitle}">더 스마트하게.<br>더 개인화되게.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Copyright © 2026 Apple Inc. All rights reserved.
+</footer>
+
+<script th:src="@{/js/iphone.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

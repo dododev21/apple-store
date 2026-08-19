@@ -1,0 +1,235 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Pretendard';
+background:#fff;
+color:#111;
+overflow-x:hidden;
+}
+
+.header{
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(20px);
+}
+
+.header .logo-sub{
+filter:invert(1);
+}
+
+.nav a,
+.sub-menu a{
+color:#111;
+}
+
+.nav a.active{
+color:#0071e3;
+}
+
+.hero{
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:140px 80px 60px;
+
+background:#fff;
+}
+
+.hero-text h1{
+font-size:110px;
+margin-bottom:20px;
+}
+
+.hero-text p{
+font-size:32px;
+color:#666;
+}
+
+.hero img{
+width:50%;
+}
+
+.product-nav{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+
+padding:100px 80px;
+}
+
+.nav-card{
+background:#fff;
+border-radius:32px;
+
+padding:30px;
+text-align:center;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+
+transition:.4s;
+}
+
+.nav-card:hover{
+transform:translateY(-10px);
+}
+
+.nav-card img{
+width:100%;
+height:180px;
+object-fit:contain;
+}
+
+.nav-card h3{
+margin-top:20px;
+font-size:28px;
+}
+
+.banner-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+
+padding:0 80px 100px;
+}
+
+.banner-card{
+overflow:hidden;
+border-radius:40px;
+}
+
+.banner-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.services{
+padding:120px 80px;
+background:#fff;
+}
+
+.services h2{
+font-size:56px;
+margin-bottom:60px;
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.service-card{
+background:white;
+border-radius:32px;
+overflow:hidden;
+
+transition:.4s;
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+}
+
+.service-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.service-card h3{
+font-size:28px;
+margin:24px 24px 10px;
+}
+
+.service-card p{
+margin:0 24px 24px;
+color:#666;
+}
+
+.accessories{
+padding:120px 80px;
+}
+
+.accessories h2{
+font-size:56px;
+margin-bottom:60px;
+}
+
+.acc-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.acc-card{
+background:#fff;
+border-radius:32px;
+padding:40px;
+text-align:center;
+
+transition:.4s;
+}
+
+.acc-card:hover{
+transform:scale(1.03);
+}
+
+.acc-card img{
+width:100%;
+height:260px;
+object-fit:contain;
+}
+
+.acc-card h3{
+margin-top:20px;
+font-size:30px;
+}
+
+.footer{
+padding:40px;
+text-align:center;
+background:#fff;
+color:#777;
+}
+
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding:120px 20px 60px;
+}
+
+.hero img{
+width:100%;
+margin-top:40px;
+}
+
+.hero-text h1{
+font-size:72px;
+}
+
+.hero-text p{
+font-size:24px;
+}
+
+.product-nav,
+.banner-grid,
+.services,
+.accessories{
+padding-left:20px;
+padding-right:20px;
+}
+
+.services h2,
+.accessories h2{
+font-size:40px;
+}
+}
